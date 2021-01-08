@@ -89,8 +89,6 @@ resource "aws_codepipeline" "codepipeline" {
       owner            = "AWS"
       provider         = "Manual"
       version          = "1"
-      input_artifacts  = ["planned"]
-      output_artifacts = ["approved"]
     }
   }
 
@@ -103,7 +101,7 @@ resource "aws_codepipeline" "codepipeline" {
       owner            = "AWS"
       provider         = "CodeBuild"
       version          = "1"
-      input_artifacts  = ["approved"]
+      input_artifacts  = ["planned"]
       output_artifacts = ["applied"]
 
       configuration = {
