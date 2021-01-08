@@ -53,9 +53,14 @@ variable "build_privileged_override" {
   default     = "false"
 }
 
-variable "package_buildspec" {
-  description = "The buildspec to be used for the Package stage (default: buildspec.yml)"
-  default     = "buildspec.yml"
+variable "buildspec_plan" {
+  description = "The buildspec to be used for the Package stage (default: buildspec_plan.yml)"
+  default     = "buildspec_plan.yml"
+}
+
+variable "buildspec_apply" {
+  description = "The buildspec to be used for the Package stage (default: buildspec_apply.yml)"
+  default     = "buildspec_apply.yml"
 }
 
 variable "tf_state_bucket_arn" {

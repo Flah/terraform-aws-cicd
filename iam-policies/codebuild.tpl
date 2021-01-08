@@ -16,7 +16,8 @@
     {
       "Effect": "Allow",
       "Resource": [
-        "${codebuild_project_build}"
+        "${codebuild_terraform_plan}",
+        "${codebuild_terraform_apply}"
       ],
       "Action": [
         "codebuild:*"

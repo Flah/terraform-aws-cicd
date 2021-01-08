@@ -63,20 +63,56 @@ resource "aws_codepipeline" "codepipeline" {
   }
 
   stage {
-    name = "Package"
+    name = "Plan"
 
     action {
-      name             = "Package"
+      name             = "Plan"
       category         = "Build"
       owner            = "AWS"
       provider         = "CodeBuild"
       version          = "1"
       input_artifacts  = ["source"]
-      output_artifacts = ["packaged"]
+      output_artifacts = ["planned"]
 
       configuration = {
-        ProjectName = aws_codebuild_project.build_project.name
+        ProjectName = aws_codebuild_project.plan.name
       }
     }
   }
+
+  stage {
+    name = "Approve"
+
+    action {
+      name             = "Approve"
+      category         = "Build"
+      owner            = "AWS"
+      provider         = "Manual"
+      version          = "1"
+      input_artifacts  = ["planned"]
+      output_artifacts = ["approved"]
+
+      configuration = {
+        ProjectName = aws_codebuild_project.plan.name
+      }
+    }
+  }
+
+  stage {
+    name = "Apply"
+
+    action {
+      name             = "Apply"
+      category         = "Build"
+      owner            = "AWS"
+      provider         = "CodeBuild"
+      version          = "1"
+      input_artifacts  = ["approved"]
+      output_artifacts = ["applied"]
+
+      configuration = {
+        ProjectName = aws_codebuild_project.apply.name
+      }
+    }
+  }    
 }
