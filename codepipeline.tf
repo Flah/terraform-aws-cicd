@@ -84,8 +84,8 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Approve"
 
     action {
-      name             = "Approve"
-      category         = "Build"
+      name             = "Approval"
+      category         = "Approval"
       owner            = "AWS"
       provider         = "Manual"
       version          = "1"
