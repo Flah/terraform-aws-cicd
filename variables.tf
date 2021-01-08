@@ -57,3 +57,7 @@ variable "package_buildspec" {
   description = "The buildspec to be used for the Package stage (default: buildspec.yml)"
   default     = "buildspec.yml"
 }
+
+variable "tf_state_bucket_arn" {
+  description = "The ARN of the S3 bucket used as backend for the Terraform state"
+}

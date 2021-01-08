@@ -10,7 +10,9 @@
       ],
       "Resource": [
         "${artifact_bucket}",
-        "${artifact_bucket}/*"
+        "${artifact_bucket}/*",
+        "${backend_bucket}",
+        "${backend_bucket}/*"
       ],
       "Effect": "Allow"
     },
