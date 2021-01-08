@@ -91,10 +91,6 @@ resource "aws_codepipeline" "codepipeline" {
       version          = "1"
       input_artifacts  = ["planned"]
       output_artifacts = ["approved"]
-
-      configuration = {
-        ProjectName = aws_codebuild_project.plan.name
-      }
     }
   }
 
